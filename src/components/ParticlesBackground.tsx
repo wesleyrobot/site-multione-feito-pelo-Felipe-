@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 const PARTICLE_COUNT = 55;
 const MAX_DISTANCE = 110;
+const MAX_DISTANCE_SQ = MAX_DISTANCE * MAX_DISTANCE;
 const COLOR = "0,170,255";
 
 class Particle {
@@ -35,7 +36,6 @@ class Particle {
   draw(ctx: CanvasRenderingContext2D) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${COLOR},0.85)`;
     ctx.fill();
   }
 }
@@ -69,14 +69,15 @@ export default function ParticlesBackground() {
 
     function connectParticles() {
       if (!ctx) return;
+      ctx.lineWidth = 0.6;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < MAX_DISTANCE) {
-            ctx.strokeStyle = `rgba(${COLOR},${1 - dist / MAX_DISTANCE})`;
-            ctx.lineWidth = 0.6;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < MAX_DISTANCE_SQ) {
+            const alpha = 1 - Math.sqrt(distSq) / MAX_DISTANCE;
+            ctx.strokeStyle = `rgba(${COLOR},${alpha})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -86,9 +87,17 @@ export default function ParticlesBackground() {
       }
     }
 
-    function animate() {
+    let lastTime = 0;
+    const FRAME_INTERVAL = 1000 / 30; // cap at 30fps
+
+    function animate(now: number) {
       if (!canvas || !ctx) return;
+      animationId = requestAnimationFrame(animate);
+      if (now - lastTime < FRAME_INTERVAL) return;
+      lastTime = now;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = `rgba(${COLOR},0.85)`;
 
       particles.forEach((p) => {
         p.move(canvas!.width, canvas!.height);
@@ -96,12 +105,11 @@ export default function ParticlesBackground() {
       });
 
       connectParticles();
-      animationId = requestAnimationFrame(animate);
     }
 
     resize();
     initParticles();
-    animate();
+    animationId = requestAnimationFrame(animate);
 
     let resizeTimer: ReturnType<typeof setTimeout>;
     const handleResize = () => {
@@ -116,6 +124,7 @@ export default function ParticlesBackground() {
       if (document.hidden) {
         cancelAnimationFrame(animationId);
       } else {
+        lastTime = 0;
         animationId = requestAnimationFrame(animate);
       }
     };

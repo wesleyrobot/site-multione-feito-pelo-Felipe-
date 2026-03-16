@@ -223,7 +223,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
     };
   }, [color, speed, direction, scale, opacity, mouseInteractive]);
 
-  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
+  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" style={{ willChange: 'transform', transform: 'translateZ(0)' }} />;
 };
 
 export default Plasma;
