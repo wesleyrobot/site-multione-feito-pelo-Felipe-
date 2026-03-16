@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #000000;
+  --color-foreground: #e2e8f0;
+  --color-card: #0a1628;
+  --color-card-border: #0f2847;
+  --color-card-hover: #0d1f3c;
+  --color-primary: #1d4ed8;
+  --color-primary-light: #3b82f6;
+  --color-secondary: #0ea5e9;
+  --color-accent: #38bdf8;
+  --color-muted: #64748b;
+  --color-surface: #030712;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1d4ed8 #0a1628;
+}
+
+body {
+  background: #000000;
+  color: #e2e8f0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a1628;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1d4ed8;
+  border-radius: 3px;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect - dark blue */
+.glass {
+  background: rgba(10, 22, 40, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 40, 71, 0.6);
+}
+
+/* Card style */
+.card {
+  background: linear-gradient(145deg, rgba(10, 22, 40, 0.9), rgba(3, 7, 18, 0.9));
+  border: 1px solid rgba(15, 40, 71, 0.5);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(29, 78, 216, 0.4);
+  box-shadow:
+    0 0 20px rgba(29, 78, 216, 0.15),
+    0 0 60px rgba(29, 78, 216, 0.05),
+    inset 0 1px 0 rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Glow effect */
+.glow {
+  box-shadow:
+    0 0 20px rgba(29, 78, 216, 0.25),
+    0 0 60px rgba(29, 78, 216, 0.08);
+}
+
+/* Particle container */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Input focus */
+input:focus,
+textarea:focus {
+  border-color: rgba(29, 78, 216, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+}
