@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Plasma from "@/components/Plasma";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
         </div>
         <Navbar />
         <main className="relative z-10 min-h-screen pt-16">{children}</main>
+        <SpeedInsights />
       </body>
     </html>
   );
