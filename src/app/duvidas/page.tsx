@@ -105,7 +105,7 @@ export default function DuvidasPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
-        <h1 className="text-4xl text-white md:text-5xl font-bold mb-4">
+        <h1 className="text-2xl sm:text-4xl text-white md:text-5xl font-bold mb-4">
             <span className="text-foreground/120">Dúvidas Frequentes</span>
         </h1>
         <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
@@ -127,7 +127,7 @@ export default function DuvidasPage() {
             placeholder="Buscar dúvida..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 rounded-xl bg-card border border-card-border text-foreground placeholder:text-muted focus:outline-none transition-colors text-lg"
+            className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-card border border-card-border text-foreground placeholder:text-muted focus:outline-none transition-colors text-base sm:text-lg"
           />
         </div>
       </motion.div>
@@ -215,7 +215,7 @@ export default function DuvidasPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.15, ease: "easeOut" }}
-                className="relative w-full max-w-2xl card p-8"
+                className="relative w-full max-w-2xl card p-4 sm:p-8"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button

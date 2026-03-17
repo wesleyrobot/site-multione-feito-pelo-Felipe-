@@ -82,7 +82,7 @@ export default function QuestionarioPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
                 <span className="text-foreground/120">Questionário</span>
         </h1>
         <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
@@ -98,7 +98,7 @@ export default function QuestionarioPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="card p-8"
+            className="card p-4 sm:p-8"
           >
             <h2 className="text-xl font-semibold text-foreground mb-6">
               Antes de começar, preencha seus dados:
@@ -168,7 +168,7 @@ export default function QuestionarioPage() {
             </div>
 
             {/* Pergunta */}
-            <div className="card p-8">
+            <div className="card p-4 sm:p-8">
               <h2 className="text-xl font-semibold text-foreground mb-6">
                 {pergunta.pergunta}
               </h2>
@@ -203,7 +203,7 @@ export default function QuestionarioPage() {
                 ))}
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between">
                 <button
                   onClick={perguntaAnterior}
                   disabled={perguntaAtual === 0}
@@ -232,7 +232,7 @@ export default function QuestionarioPage() {
             key="resultado"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="card p-8 text-center"
+            className="card p-4 sm:p-8 text-center"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -262,7 +262,7 @@ export default function QuestionarioPage() {
             </p>
 
             <div className="rounded-xl bg-surface/80 border border-card-border/40 p-6 mb-8 inline-block">
-              <div className="flex items-center gap-8 justify-center">
+              <div className="flex items-center gap-4 sm:gap-8 justify-center">
                 <div className="text-center">
                   <p className="text-3xl font-bold text-primary-light">{pontuacao}</p>
                   <p className="text-sm text-muted">Acertos</p>

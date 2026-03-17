@@ -229,7 +229,7 @@ export default function PlataformaPage() {
         viewport={{ once: true }}
         className="bento-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
-        <h1 className="text-4xl text-white md:text-5xl font-bold mb-4">
+        <h1 className="text-2xl sm:text-4xl text-white md:text-5xl font-bold mb-4">
             <span className="text-foreground/120">A Plataforma</span>
         </h1>
         <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
@@ -301,7 +301,7 @@ export default function PlataformaPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto card p-8"
+              className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto card p-4 sm:p-8"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Botão fechar */}
